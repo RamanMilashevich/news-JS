@@ -14,11 +14,22 @@
             <div class="sources buttons"></div>
             <div class="news"></div>
         </main>
-        <footer>
+        <footer class="footer">
             <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
+                <span id="year"></span> Created by 
+              <a href="https://github.com/RamanMilashevich" target="_blank">RamanMilashevich</a>
             </p>
-        </footer>
+            <p class="newsapi">
+              Powered by 
+              <a href="https://newsapi.org" target="_blank">NewsAPI</a>
+            </p>
+            <a href="https://rs.school/courses/javascript">The Rolling Scopes School</a>
+          </footer>
+          
+          <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+          </script>
+          
 
         <template id="sourceItemTemp">
             <div class="source__item">

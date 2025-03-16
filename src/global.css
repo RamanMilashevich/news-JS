@@ -1,6 +1,10 @@
 body {
+    display: block;
+    margin: auto;
+    max-width: 1040px;
+    padding: 0 20px;
     color: #fff;
-    background: #17181c;
+    background: #151a2b;
     font-family: sans-serif;
 }
 
@@ -17,7 +21,7 @@ footer {
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 footer .copyright {
     font-size: 14px;
@@ -33,3 +37,78 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap;
+  }
+  
+  .footer p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .footer a {
+    color: #61dafb;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .rs-logo {
+    width: 120px;
+    height: auto;
+  }
+  
+  @media screen and (max-width: 1040px) {
+    .footer {
+      padding: 20px;
+    }
+  
+    .rs-logo {
+      width: 100px;
+    }
+  
+    .footer p {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer p {
+      margin: 10px 0;
+    }
+  
+    .rs-logo {
+      width: 80px;
+    }
+  }
+  
+  @media screen and (max-width: 384px) {
+    .footer {
+      padding: 10px;
+    }
+  
+    .footer p {
+      font-size: 12px;
+    }
+  
+    .rs-logo {
+      width: 60px;
+    }
+  }
+  
