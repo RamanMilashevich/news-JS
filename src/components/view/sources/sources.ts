@@ -1,20 +1,36 @@
 import './sources.css';
 
 class Sources {
-    draw(data) {
+    draw(data: { name: string; id: string }[]): void {
         const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp');
+        const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement | null;
+
+        if (!sourceItemTemp) {
+            console.error('Template element #sourceItemTemp not found');
+            return;
+        }
 
         data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
+            const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+            const sourceNameElement = sourceClone.querySelector('.source__item-name');
+            const sourceItemElement = sourceClone.querySelector('.source__item');
 
-            fragment.append(sourceClone);
+            if (sourceNameElement && sourceItemElement) {
+                sourceNameElement.textContent = item.name;
+                sourceItemElement.setAttribute('data-source-id', item.id);
+                fragment.append(sourceClone);
+            } else {
+                console.error('Required elements not found in template');
+            }
         });
 
-        document.querySelector('.sources').append(fragment);
+        const sourcesContainer = document.querySelector('.sources');
+        if (sourcesContainer) {
+            sourcesContainer.append(fragment);
+        } else {
+            console.error('Sources container not found');
+        }
     }
 }
 
