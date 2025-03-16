@@ -1,7 +1,7 @@
 import './news.css';
 
 // Интерфейс для статьи
-interface Article {
+export interface Article {
     urlToImage: string | null;
     author: string | null;
     source: {

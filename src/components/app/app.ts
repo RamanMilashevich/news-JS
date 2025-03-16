@@ -1,26 +1,17 @@
+import { Article } from 'components/view/news/news';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
+import Sources from 'components/view/sources/sources';
 
 // Define the types directly in this file
-interface Article {
-    title: string;
-    description: string;
-    url: string;
-    urlToImage: string;
-    publishedAt: string;
-}
 
-interface Source {
-    id: string;
-    name: string;
-}
 
 interface NewsData {
     articles: Article[];
 }
 
 interface SourcesData {
-    sources: Source[];
+    sources: Sources[];
 }
 
 class App {
@@ -34,14 +25,14 @@ class App {
 
     start(): void {
         document?.querySelector('.sources')?.addEventListener('click', (e) =>
-            this.controller.getNews(e as MouseEvent, (data: string) => {
-                const parsedData: NewsData = JSON.parse(data); // Parse JSON string
+            this.controller.getNews(e as MouseEvent, (data: unknown) => {
+                const parsedData: NewsData = data as NewsData; // Parse JSON string
                 this.view.drawNews(parsedData); // Pass parsed object
             })
         );
 
-        this.controller.getSources((data: string) => {
-            const parsedData: SourcesData = JSON.parse(data); // Parse JSON string
+        this.controller.getSources((data: unknown) => {
+            const parsedData: SourcesData = data as SourcesData; // Parse JSON string
             this.view.drawSources(parsedData); // Pass parsed object
         });
     }

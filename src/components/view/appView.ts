@@ -1,5 +1,6 @@
-import News from './news/news';
+import News, { Article } from './news/news';
 import Sources from './sources/sources';
+
 
 // Интерфейс для данных новостей
 interface NewsData {
@@ -8,7 +9,7 @@ interface NewsData {
 
 // Интерфейс для данных источников
 interface SourcesData {
-    sources: Source[];
+    sources: Sources[];
 }
 
 export class AppView {
@@ -17,7 +18,7 @@ export class AppView {
 
     constructor() {
         this.news = new News();
-        this.sources = new Sources();
+        this.sources = new Sources('', '');
     }
 
     drawNews(data: NewsData): void {
@@ -26,7 +27,10 @@ export class AppView {
     }
 
     drawSources(data: SourcesData): void {
-        const values = data?.sources ? data.sources : [];
+        const values = data?.sources ? data.sources.map(source => ({
+            name: source.name, 
+            id: source.id     
+        })) : [];
         this.sources.draw(values);
     }
 }

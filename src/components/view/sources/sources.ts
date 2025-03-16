@@ -1,6 +1,14 @@
 import './sources.css';
 
 class Sources {
+    name: string;
+    id: string;
+
+    constructor(name: string, id: string) {
+        this.name = name;
+        this.id = id;
+    }
+    
     draw(data: { name: string; id: string }[]): void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement | null;
